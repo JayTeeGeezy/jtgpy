@@ -12,7 +12,7 @@ setup(
 	description='JTG\'s Common Python Code',
 	long_description=read_text('README.rst'),
 	classifiers=[
-		'Development Status :: 1 - Planning',
+		'Development Status :: 2 - Pre-Alpha',
 		'Environment :: No Input/Output (Daemon)',
 		'Intended Audience :: Developers',
 		'License :: OSI Approved :: MIT License',
