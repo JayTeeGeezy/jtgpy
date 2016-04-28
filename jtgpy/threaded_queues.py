@@ -1,3 +1,4 @@
+import csv
 import queue
 import threading
 
@@ -102,3 +103,22 @@ class WorkerQueue(ThreadedQueue):
 
 		if callback is not None:
 			callback(output)
+
+
+class QueuedCsvWriter(ThreadedQueue):
+	"""A concrete implementation of ThreadedQueue that allows multiple threads to write to a single CSV file"""
+
+	def __init__(self, csv_file, *args, **kwargs):
+		super().__init__(threads=1, *args, **kwargs)
+
+		self.csv_writer = csv.writer(csv_file)
+
+	def writerow(self, row):
+		"""Add the specified row to the queue"""
+
+		self.put(row)
+
+	def process_item(self, row):
+		"""Write the specified row to the output file"""
+
+		self.csv_writer.writerow(row)
