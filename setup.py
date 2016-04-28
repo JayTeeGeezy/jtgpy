@@ -8,7 +8,7 @@ def read_text(filename):
 
 setup(
 	name='jtgpy',
-	version='0.0.1',
+	version='0.0.2',
 	description='JTG\'s Common Python Code',
 	long_description=read_text('README.rst'),
 	classifiers=[
