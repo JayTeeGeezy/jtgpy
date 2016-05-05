@@ -111,7 +111,8 @@ class QueuedCsvWriter(ThreadedQueue):
 	def __init__(self, csv_file, *args, **kwargs):
 		super().__init__(threads=1, *args, **kwargs)
 
-		self.csv_writer = csv.writer(csv_file)
+		self.csv_file = csv_file
+		self.csv_writer = csv.writer(self.csv_file)
 
 	def writerow(self, row):
 		"""Add the specified row to the queue"""
@@ -122,3 +123,4 @@ class QueuedCsvWriter(ThreadedQueue):
 		"""Write the specified row to the output file"""
 
 		self.csv_writer.writerow(row)
+		self.csv_file.flush()
